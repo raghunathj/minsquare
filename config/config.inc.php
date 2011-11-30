@@ -30,4 +30,3 @@ define("DBDATABASE",$min_db_database);
  */
 defined('MIN_START_TIME') or define('MIN_START_TIME', microtime(true));
 defined('MIN_START_MEM') or define('MIN_START_MEM', memory_get_usage());
-
