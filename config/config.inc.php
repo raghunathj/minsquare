@@ -24,6 +24,11 @@ define("DBUSERNAME",$min_db_username);
 define("DBPASSWORD",$min_db_password);
 define("DBDATABASE",$min_db_database);
 
+/*
+ * Location Time
+ */
+
+define("LOCALTIME",date_default_timezone_set('Asia/Kolkata'));
 
 /*
  * Memory and time log
