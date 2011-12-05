@@ -35,3 +35,9 @@ define("LOCALTIME",date_default_timezone_set('Asia/Kolkata'));
  */
 defined('MIN_START_TIME') or define('MIN_START_TIME', microtime(true));
 defined('MIN_START_MEM') or define('MIN_START_MEM', memory_get_usage());
+
+/*
+ * Log file Path
+ */
+$err_log_url = $baseurl.'log/';
+define("ERRORLOG",$err_log_url);

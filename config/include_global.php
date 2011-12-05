@@ -7,4 +7,5 @@
 if(!isset($_SESSION)){
 	session_start();
 }
+ob_start();
 include 'config.inc.php';
