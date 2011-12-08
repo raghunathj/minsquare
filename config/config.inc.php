@@ -5,6 +5,7 @@
  */
 
 $baseurl = "http://localhost/minsquare/";
+
 $admin_path = trim($_SERVER['admin_path'], '/').'/';
 $core_path = trim($_SERVER['core_path'], '/').'/';
 
@@ -41,3 +42,10 @@ defined('MIN_START_MEM') or define('MIN_START_MEM', memory_get_usage());
  */
 $err_log_url = $baseurl.'log/';
 define("ERRORLOG",$err_log_url);
+
+/*
+ * App in production or development mode
+ */
+
+$pro_mode = false;
+define("PRMODE",$pro_mode);
