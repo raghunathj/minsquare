@@ -29,32 +29,6 @@ class db{
 	}
 	
 	/*
-	 * List all tables names
-	 */
-	
-	public function list_tables($dbname,$default,$godeep){
-		if($default){
-			//If true then use the current database that is added on config file
-			$dbname = DBDATABASE;
-		}
-		$result = mysql_list_tables($dbname);
-		$tables = array();
-		$q = 0;
-		while ($row = mysql_fetch_row($result)) {
-			//Fetch all table 
-			$tables['tables'][$q] = $row;
-				//If you want to pull more details for the table then set as true
-				if($deep){
-					//This is to fect fields
-					$query_level = "SELECT * FROM ".$row;
-					
-				}
-			$q++;
-		}	
-		return $tables;
-	}
-	
-	/*
 	 * Function for Basic Query
 	 * $table_name -> Specigy a table name
 	 * $order_by -> ORDER BY a specific field in ASC or DESC order

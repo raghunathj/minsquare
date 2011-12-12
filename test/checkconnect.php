@@ -11,9 +11,4 @@ echo '<pre>';
 print_r($result);
 echo '</pre>';
 echo '<hr/>';
-$result = $db->list_tables("",true);
-echo 'List Tables';
-echo '<pre>';
-print_r($result);
-echo '</pre>';
 ?>

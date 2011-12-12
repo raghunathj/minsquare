@@ -1,13 +1,15 @@
 <?php
 include '../config/include_global.php';
-include '../core/class.inc.php';
 $core_class = array(
-				"core" => "db"
+				"db" => "core",
+				"scaffold" => "core"
 			);
-$call = new call();
-$db = $call->call_classes($core_class);
+$call = new load();
+$cl = $call->load_class($core_class);
+$db = new db();
 $db->connect();
-$result = $db->display("test","id desc");
+$cls = new scaffold();
+$result = $cls->get_table_list("",true,true);
 echo '<pre>';
 print_r($result);
 echo '</pre>';

@@ -9,4 +9,5 @@ if(!isset($_SESSION)){
 }
 ob_start();
 include 'config.inc.php';
-//include 'bootstrap.php';
+include '../core/class.inc.php';
+$load = new load();

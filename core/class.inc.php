@@ -4,21 +4,22 @@
  * BETA
  */
 
-class call{
+class load{
 	
 	public function __construct(){
 		//Nothing right now
 	}
 	
-	public function call_classes($array){
+	
+	/*
+	 * Function used to call classes that are required.
+	 */
+	public function load_class($array){
 		$class = $array;
-		while($classes = current($class)){
-			if (isset($classes) ) {
-				require_once( ABSPATH .key($class).'/'.current($class).'.inc.php' );
-				$class_name = current($class);
-				return new $class_name;
-			}
+		$count_class = count($class);
+		$keys = array_keys($class);
+		for($i=0;$i<$count_class;$i++){
+			require_once( ABSPATH .$class[$keys[$i]].'/'.$keys[$i].'.inc.php' );
 		}
 	}
-
 }
