@@ -4,8 +4,6 @@
  * File moved to Core folder
  * version 0.5
  */
-
-include "../config/include_global.php";
 class db{
 	private $connection;
 	public $cdata;
@@ -21,12 +19,39 @@ class db{
 	public function connect(){
 		$this->connection = mysql_connect(DBHOST,DBUSERNAME,DBPASSWORD);
 		if(!$this->connection){
+			echo 'con';
 			throw new Exception("Unable to Connect Host. More Info >".mysql_errno());
 		}else{
 			if(!mysql_select_db(DBDATABASE,$this->connection)){
 				error_log("DATE: ".$this->cdate."Unable to Connect Database.",3,ERRORLOG);
 			}
 		}
+	}
+	
+	/*
+	 * List all tables names
+	 */
+	
+	public function list_tables($dbname,$default,$godeep){
+		if($default){
+			//If true then use the current database that is added on config file
+			$dbname = DBDATABASE;
+		}
+		$result = mysql_list_tables($dbname);
+		$tables = array();
+		$q = 0;
+		while ($row = mysql_fetch_row($result)) {
+			//Fetch all table 
+			$tables['tables'][$q] = $row;
+				//If you want to pull more details for the table then set as true
+				if($deep){
+					//This is to fect fields
+					$query_level = "SELECT * FROM ".$row;
+					
+				}
+			$q++;
+		}	
+		return $tables;
 	}
 	
 	/*
@@ -38,7 +63,7 @@ class db{
 		if($this->connection){
 			$query = "SELECT * FROM $table_name ORDER BY $order_by";
 			$result = mysql_query($query);
-			$result = prepare_results($result,"array");
+			$result = $this->prepare_results($result,"array");
 			if($result){
 				return $result;
 			}else{
@@ -56,7 +81,7 @@ class db{
 	protected function prepare_results($result,$type){
 		$res_array = array();
 		$fetch_type = "mysql_fetch_".$type;
-		for($count=0;$row = $fetchtype($result);$count++)
+		for($count=0;$row = $fetch_type($result);$count++)
 		{
 		$res_array[$count] = $row;
 		}
@@ -73,11 +98,18 @@ class db{
 	
 	public function display_selected($table_name,$field,$where,$count_status){
 		if($this->connection){
+			$result_array = array();
 			$query = "SELECT $fields FROM $table $where";
 			$result = mysql_query($query);
 			$result = prepare_results($result,"assoc");
-			if($result){
-				return $result;
+			$result_array['result'] = $result;
+			if($count_status == true){
+				$query = "SELECT COUNT(*) FROM $table $where";
+				$result_2 = mysql_query($query);
+				$result_array['count'] = $result_2;
+			}
+			if($result_array){
+				return $result_array;
 			}else{
 			error_log("DATE: ".$this->cdate."SELECT query failed >".mysql_error(),3,ERRORLOG);
 			}
@@ -85,6 +117,9 @@ class db{
 			error_log("DATE: ".$this->cdate."Unable to Connect Database.",3,ERRORLOG);
 		}
 	}
+	
+	
+	
 	
 	
 	

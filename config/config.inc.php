@@ -3,11 +3,12 @@
  * This is the minsquare config page
  * Will be changing in the future
  */
-
+//error_reporting (E_ALL ^ E_NOTICE); 
 $baseurl = "http://localhost/minsquare/";
-
-$admin_path = trim($_SERVER['admin_path'], '/').'/';
-$core_path = trim($_SERVER['core_path'], '/').'/';
+$abspath = "E:/wamp/www/minsquare/";
+/*$admin_path = trim($_SERVER['admin_path'], '/').'/';
+$core_path = trim($_SERVER['core_path'], '/').'/';*/
+define("ABSPATH",$abspath);
 
 /*
  * SQL detials
@@ -24,6 +25,7 @@ define("DBHOST",$min_db_host);
 define("DBUSERNAME",$min_db_username);
 define("DBPASSWORD",$min_db_password);
 define("DBDATABASE",$min_db_database);
+
 
 /*
  * Location Time
