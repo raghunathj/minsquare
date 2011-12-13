@@ -57,12 +57,18 @@ class scaffold{
 		/*
 		 * @result - 1 > Success, 2 > Something Went Wrong, 3 > File already exist
 		 */
-		if((file_exists($controller_path.'/'.$filename.'.php'))&&(file_exists($model_path.'/'.$filename.'.php'))&&(file_exists($view_path.'/'.$filename.'.php'))){
+		if((file_exists(ABSPATH .$controller_path.'/'.$filename.'.php'))&&(file_exists(ABSPATH .$model_path.'/'.$filename.'.php'))&&(file_exists(ABSPATH .$view_path.'/'.$filename.'.php'))){
 			$response = 3;
 			return $response;
 		}else{
-			$response = 2;
-			return 2;
+			$sfilehandel = fopen(ABSPATH .$controller_path.'/'.$filename.'.php', 'w') or die("can't open file");
+			fclose($sfileHandle);
+			$sfilehandel = fopen(ABSPATH .$model_path.'/'.$filename.'.php', 'w') or die("can't open file");
+			fclose($sfileHandle);
+			$sfilehandel = fopen(ABSPATH .$view_path.'/'.$filename.'.php', 'w') or die("can't open file");
+			fclose($sfileHandle);
+			$response = 1;
+			return 1;
 		}
 	}
 }

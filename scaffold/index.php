@@ -21,18 +21,27 @@ $scaffold = new scaffold();
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" charset="utf-8" />
 </head>
 <body>
+<div class="topbar">
+	<div class="topbar-inner">
+		<div class="topcontainer">
+			<a class="sclogo" href="#">min<sup>2</sup> Scaffold tool</a>
+		</div>
+	</div>
+</div>
 	<div id="container">
 		<div id="body">
-			<h1>Create a MVC file</h1>
-			<form>
-				<p>1. Select a Table</p>
-				<?php 
+			<h1>Scaffold version 1.0: Generate a MVC file</h1>
+			<div class="successm"></div>
+			<div class="errorm"></div>
+			<?php 
 					//Get table list
 					$scaffold_tables = $scaffold->get_table_list("",true,false);
 					if($scaffold_tables){
-				?>
+			?>
+			<form action="createfile.php" method="POST">
+				<p>1. Select a Table</p>
 				<p>
-				<select>
+				<select name="scaffold_table">
 					<?php 
 					$sc_count = count($scaffold_tables['tables']);
 					for($i=0;$i<$sc_count;$i++){
@@ -44,16 +53,18 @@ $scaffold = new scaffold();
 					
 				</select>
 				</p>
-				<?php 
-					}else{
-						echo '<p><code>No tables found.</code></p>';
-					}
-				?>
+				
 				<p>2. Type a file name to create</p>
 				<p><input type="text" name="scaffold_filename" /></p>
 				<p>3. Hit submit to create the file in MVC folders</p>
 				<p><input type="submit" name="scaffold_submit" value="Create"/>
+				
 			</form>
+			<?php 
+					}else{
+						echo '<div class="errorm"><p>No Tables Found. Configure your database at config/config.inc.php file.</p></div>';
+					}
+			?>
 			<p class="footer">Page rendered in <strong><?php echo MIN_START_MEM;?></strong> seconds. This works only on minsquare ver 1.0</p>
 		</div>
 	</div>

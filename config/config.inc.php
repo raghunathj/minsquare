@@ -5,7 +5,7 @@
  */
 //error_reporting (E_ALL ^ E_NOTICE); 
 $baseurl = "http://localhost/minsquare/";
-$abspath = "E:/wamp/www/minsquare/";
+$abspath = "D:/wamp/www/minsquare/";
 /*$admin_path = trim($_SERVER['admin_path'], '/').'/';
 $core_path = trim($_SERVER['core_path'], '/').'/';*/
 define("ABSPATH",$abspath);
