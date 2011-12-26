@@ -13,6 +13,12 @@ $load->load_class($core_class);
 $db = new db();
 $db->connect();
 $scaffold = new scaffold();
+$message = (int)$_GET['error'];
+$error_text = "";
+$success_text = "";
+switch($message){
+	case 1: $success_text = "File Created Successfully";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,8 +37,8 @@ $scaffold = new scaffold();
 	<div id="container">
 		<div id="body">
 			<h1>Scaffold version 1.0: Generate a MVC file</h1>
-			<div class="successm"></div>
-			<div class="errorm"></div>
+			<div class="successm"><?php echo $success_text;?></div>
+			<div class="errorm"><?php echo $error_text;?></div>
 			<?php 
 					//Get table list
 					$scaffold_tables = $scaffold->get_table_list("",true,false);
