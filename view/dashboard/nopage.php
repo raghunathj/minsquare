@@ -17,6 +17,9 @@ require THEME.'navigation.php';
 	<div class="page-header">
 		<h1><?php echo $page_name;?> <small><?php echo $page_slang;?></small></h1>
 	</div>
+	<div class="nopage">
+		No Page Found
+	</div>
 <?php 
 require THEME."footer.php";
 ?>

@@ -7,21 +7,23 @@
 
 class min_dashboard extends controller{
 	
-	function __construct(){
+	public function __construct(){
 		parent::__construct();
-		echo "LOADED";
+		
+		
 	}
 	
-	function index(){
+	public function index(){
+		
 		include 'view/dashboard/index.php';
 	}
 	
-	function edit(){
-		
+	public function edit(){
+		include 'view/dashboard/nopage.php';
 	}
 	
-	function delete(){
-		
+	public function delete(){
+		include 'view/dashboard/nopage.php';
 	}
 	
 	

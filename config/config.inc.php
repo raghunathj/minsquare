@@ -14,7 +14,7 @@ define("ABSPATH",$abspath);
  * Template/Theme Name
  */
 
-define("THEME_NAME","default");
+define("THEME","theme/default/");
 
 
 

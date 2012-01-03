@@ -7,7 +7,7 @@ include("config/include_global.php");
 /*
  * Enable Template Engine
  */
-require "lib/smarty/Smarty.class.php";
+//require "lib/smarty/Smarty.class.php";
 
 require "lib/controller.php";
 
