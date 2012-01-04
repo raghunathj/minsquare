@@ -52,10 +52,10 @@ class router{
   		if(!file_exists($controller_location))
   			echo "Unable To Find the File";
   		require($controller_location);
-  		$controller_name = 'min_'.$this->controller;
+  		$controller_name = 'min_'.$this->controller.'_controller';
   		$con = new $controller_name;
   		$function = $this->action;
-  		call_user_func( array( $controller_name, $function ) );
+  		call_user_func( array( $con, $function ) );
   		return $this;
   	}
 	

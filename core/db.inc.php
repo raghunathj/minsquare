@@ -41,6 +41,7 @@ class db{
 			if($result){
 				return $result;
 			}else{
+				return $result;
 			error_log("DATE: ".$this->cdate."SELECT query failed >".mysql_error(),3,ERRORLOG);
 			}
 		}else{

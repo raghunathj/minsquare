@@ -10,6 +10,7 @@ include("config/include_global.php");
 //require "lib/smarty/Smarty.class.php";
 
 require "lib/controller.php";
+require "lib/model.php";
 
 /*
  * Theme Location
