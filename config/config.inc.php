@@ -9,6 +9,7 @@ $abspath = "E:/wamp/www/minsquare/";
 /*$admin_path = trim($_SERVER['admin_path'], '/').'/';
 $core_path = trim($_SERVER['core_path'], '/').'/';*/
 define("ABSPATH",$abspath);
+define("BASEURL",$baseurl);
 
 /*
  * Template/Theme Name

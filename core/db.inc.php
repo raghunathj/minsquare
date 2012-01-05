@@ -53,7 +53,7 @@ class db{
 	/*
 	 * Function to prepare the result into an array or assoc
 	 */
-	protected function prepare_results($result,$type){
+	function prepare_results($result,$type){
 		$res_array = array();
 		$fetch_type = "mysql_fetch_".$type;
 		for($count=0;$row = $fetch_type($result);$count++)
@@ -74,9 +74,9 @@ class db{
 	public function display_selected($table_name,$field,$where,$count_status){
 		if($this->connection){
 			$result_array = array();
-			$query = "SELECT $fields FROM $table $where";
+			$query = "SELECT $field FROM $table_name $where";
 			$result = mysql_query($query);
-			$result = prepare_results($result,"assoc");
+			$result = $this->prepare_results($result,"assoc");
 			$result_array['result'] = $result;
 			if($count_status == true){
 				$query = "SELECT COUNT(*) FROM $table $where";

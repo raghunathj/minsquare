@@ -42,6 +42,25 @@ class scaffold{
 		return $tables;
 	}
 	
+	public function get_table_structure($tablename){
+		$tables = array();
+		$query_level = mysql_query("SHOW columns FROM ".$tablename);
+				if($query_level){
+						$v = 0;
+						$fields = array();
+						while($fields = mysql_fetch_array($query_level)){
+							$tables[$v] = $fields;
+							$v++;
+						}
+				}
+		return $tables;
+	}
+	
+	public function fieldtypeselection($type){
+		
+		
+	}
+	
 	/*'
 	 * Function to create file
 	 */
