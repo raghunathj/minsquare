@@ -56,12 +56,18 @@ class scaffold{
 		return $tables;
 	}
 	
-	public function fieldtypeselection($type){
-		
-		
+	/*
+	 * Function to create HTML
+	 */
+	public function fieldtypehtml($field,$type,$null,$key,$default,$extra){
+		$start_html = "";
+		$end_html = "";
+		if($type === "var"){
+			
+		}
 	}
 	
-	/*'
+	/*
 	 * Function to create file
 	 */
 	public function create($filename,$table_name){

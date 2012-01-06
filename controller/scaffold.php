@@ -31,6 +31,17 @@ class min_scaffold_controller extends controller{
 		$table = $_GET['tablename'];
 		$table_data = $this->minmodel->structure($table);
 		//$new_data = $table_data['table_fields']
+		foreach($table_data as $table_data){
+			$table_field = $table_data[0];
+			$table_type = $table_data[1];
+			$table_null_state = $table_data[2];
+			$table_key = $table_data[3];
+			$table_default = $table_data[4];
+			$table_extra = $table_data[5];
+			//Regular expression to remove number
+			$regexop = preg_replace("/\(.*\)/", "", $table_type);
+			$table_type = rtrim($regexop, ' ');
+		}
 		echo "TABLE NAME IS: ".$table;
 		include 'view/scaffold/ajax/createstructure.php';
 	}
